@@ -10,14 +10,15 @@ class HousingException(Exception):
     @staticmethod
     def get_detailed_error_message(error_message:Exception,error_detail:sys)->str:
         _,_,exec_tb = error_detail.exc.info()
-        line_number =  exec_tb.tb_frame.f_lineno
+        exception_block_line_number =  exec_tb.tb_frame.f_lineno
+        try_block_line_number = exec_tb.tb_lineno
         file_name = exec.tb.tb_frame.f_code.co_filename
 
-        error_message = f"Error Occured in script : [{file_name}] at the line number: [{line_number}] error message : [{error_message}]"
+        error_message = f"Error Occured in script : [{file_name}] at the line number: [{try_block_line_number}] Exception block line number:[{exception_block_line_number}]  error message : [{error_message}]"
         return error_message
 
     def __str__(self):
-        return self.error_message
+        return str(self.error_message)
 
 
     def __repr__(self)-> str:

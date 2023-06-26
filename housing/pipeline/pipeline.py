@@ -1,8 +1,8 @@
-from housing.config.configuration import Configuratioin
+from housing.config.configuration import Configuration
 from housing.logger import logging
 from housing.exception import HousingException
 
-from hosuing.entity.artifact_entity import DataIngestionArtifact
+from housing.entity.artifact_entity import DataIngestionArtifact
 from housing.entity.config_entity import DataIngestionConfig
 from housing.component.data_ingestion import DataIngestion
 
@@ -26,22 +26,22 @@ class Pipeline:
             raise HousingException(e,sys) from e
 
 
-    def start_data_validation(self)->DataValidationArtifact:
+    def start_data_validation(self):
         pass
 
 
-    def start_data_transformation(self)->DataTransformationArtifact:
+    def start_data_transformation(self):
         pass
 
-    def start_model_trainer(self)->ModelTrainerArtifact:
-        pass
-
-
-    def start_model_evaluation(self)->ModelEvaluationArtifact:
+    def start_model_trainer(self):
         pass
 
 
-    def start_model_pusher(self)->ModelPusherArtifact:
+    def start_model_evaluation(self):
+        pass
+
+
+    def start_model_pusher(self):
         pass
 
 

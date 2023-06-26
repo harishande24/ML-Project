@@ -25,7 +25,7 @@ class DataIngestion:
             download_url = self.data_ingestion_config.dataset_download_url
 
             #folder location to download file
-            tgz_download_url = self.data_ingestion_config.tgz_download_dir
+            tgz_download_dir = self.data_ingestion_config.tgz_download_dir
 
 
             if os.path.exists(tgz_download_dir):
@@ -90,7 +90,7 @@ class DataIngestion:
             housing_data_frame["income_cat"] = pd.cut(
 
                 housing_data_frame["median_income"],
-                bins=[0,1.5,3.0, 4.5, 6.0, np.inf]
+                bins=[0,1.5,3.0, 4.5, 6.0, np.inf],
                 labels=[1,2,3,4,5]
 
             )
@@ -102,7 +102,7 @@ class DataIngestion:
 
             for train_index, test_index in split.split(housing_data_frame,housing_data_frame["income_cat"]):
                 strat_train_set = housing_data_frame.loc[train_index].drop(["income_cat"],axis=1)
-                strat_test_set = housing_data_frame.loc[test_index].drop(["income_cat"]),axis=1)
+                strat_test_set = housing_data_frame.loc[test_index].drop(["income_cat"],axis=1)
 
                 train_file_path = os.path.join(self.data_ingestion_config.ingested_train_dir,file_name)
 
