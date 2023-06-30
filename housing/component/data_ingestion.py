@@ -23,16 +23,13 @@ class DataIngestion:
         try:
             #extraction remote url to downoad dataset
             download_url = self.data_ingestion_config.dataset_download_url
+            logging.info(f"Downloading: {download_url}")
 
             #folder location to download file
             tgz_download_dir = self.data_ingestion_config.tgz_download_dir
 
-
-            if os.path.exists(tgz_download_dir):
-                os.remove(tgz_download_dir)
-
-            os.makedir(tgz_download_dir,exist_ok=True)
-
+            os.makedirs(tgz_download_dir,exist_ok=True)
+            
             housing_file_name = os.path.basename(download_url)
 
             tgz_file_path = os.path.join(tgz_download_dir,housing_file_name)
@@ -63,7 +60,7 @@ class DataIngestion:
             if os.path.exists(raw_data_dir):
                 os.remove(raw_data_dir)
 
-            os.makedir(raw_data_dir,exist_ok=True)
+            os.makedirs(raw_data_dir,exist_ok=True)
 
             logging.info("Extracting tgz file: [{tgz_file_path}] into dir : [{raw_data_dir}]")
 

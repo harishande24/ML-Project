@@ -10,10 +10,6 @@ from housing.exception import HousingException
 
 
 
-
-
-
-
 class Configuration :
 
     
